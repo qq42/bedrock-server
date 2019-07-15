@@ -5,7 +5,7 @@ ENV VERSION=$BDS_Version
 
 # Install dependencies, download and extract the bedrock server
 
-RUN if [ "$VERSION" = "latest" ] then \
+RUN if [ "$VERSION" = "latest" ] ; then \
         LATEST_VERSION=$( \
             curl -v --silent  https://www.minecraft.net/en-us/download/server/bedrock/ 2>&1 | \
             grep -o 'https://minecraft.azureedge.net/bin-linux/[^"]*' | \
