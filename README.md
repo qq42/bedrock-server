@@ -5,9 +5,9 @@ Run a bedrock server in a Docker container.
 This Docker image will download the Bedrock Server app and set it up, along with its dependencies.
 
 ## Build docker
-If you are building the docker container you have the option of fetching the most recent version of Minecraft Bedrock Dedicated Server.  Simply the "version" build tag to "latest". Otherwise, you can set the "version" tag to a specific version if you'd like.  For example:
-1. docker build . --build-arg VERSION=latest  roemer/bedrock-server   # Attempts to fetch the latest release version at build
-2. docker build . --build-arg VERSION=1.12.0.28 roemer/bedrock-server  # Attempts to fetch the 1.12.0.28 release version at build
+If you are building the docker container you have the option of fetching the most recent version of Minecraft Bedrock Dedicated Server.  Simply the "BDS_Version" build tag to "latest". Otherwise, you can set the "BDS_Version" tag to a specific version if you'd like.  For example:
+1. docker build . --build-arg BDS_Version=latest  roemer/bedrock-server   # Attempts to fetch the latest release version at build
+2. docker build . --build-arg BDS_Version=1.12.0.28 roemer/bedrock-server  # Attempts to fetch the 1.12.0.28 release version at build
 
 ## Usage
 ### New installation
