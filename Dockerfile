@@ -23,13 +23,14 @@ RUN apt-get update && \
 
 # Create a separate folder for configurations move the original files there and create links for the files
 RUN mkdir /bedrock-server/config && \
-           for f in server.properties permissions.json whitelist.json ; do \
+        for f in server.properties permissions.json whitelist.json ; do \
             if [ -f "/bedrock-server/$f" ] ; then \ 
+                echo "$f found." && \
                 mv "/bedrock-server/$f" /bedrock-server/config && \
-                ln -s "/bedrock-server/config/$f" "/bedrock-server/$f" \
-            else \
-            echo "$f not found." \
-    fi
+                ln -s "/bedrock-server/config/$f" "/bedrock-server/$f" ; \
+            else echo "$f not found." ; \
+            fi ; \
+        done
 EXPOSE 19132/udp
 
 VOLUME /bedrock-server/worlds /bedrock-server/config
