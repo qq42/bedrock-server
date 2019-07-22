@@ -16,7 +16,8 @@ RUN if [ "$VERSION" = "latest" ] ; then \
         echo "Setting VERSION to $VERSION" ; \
     else echo "Using VERSION of $VERSION"; \
     fi
-RUN curl -v -S https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip --output bedrock-server.zip && \
+RUN echo https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip && \
+    curl -v -S https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip --output bedrock-server.zip && \
     unzip bedrock-server.zip -d bedrock-server && \
     rm bedrock-server.zip
 
