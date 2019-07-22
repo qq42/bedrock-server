@@ -17,7 +17,7 @@ RUN if [ "$VERSION" = "latest" ] ; then \
     
 RUN apt-get update && \
     apt-get install -y unzip curl libcurl4 libssl1.0.0 && \
-    echo "Fetching https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip" \
+    echo "Fetching https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip" && \
     curl https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip --output bedrock-server.zip && \
     unzip bedrock-server.zip -d bedrock-server && \
     rm bedrock-server.zip
