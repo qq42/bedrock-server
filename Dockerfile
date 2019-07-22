@@ -12,11 +12,11 @@ RUN if [ "$VERSION" = "latest" ] ; then \
             curl -v -S  https://www.minecraft.net/en-us/download/server/bedrock/ 2>&1 | \
             grep -o 'https://minecraft.azureedge.net/bin-linux/[^"]*' | \
             sed 's#.*/bedrock-server-##' | sed 's/.zip//') && \
-        export VERSION=$LATEST_VERSION && \
+        VERSION=$LATEST_VERSION && \
         echo "Setting VERSION to $VERSION" ; \
     else echo "Using VERSION of $VERSION"; \
-    fi
-RUN echo https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip && \
+    fi ; \
+    echo https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip && \
     curl -v -S https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip --output bedrock-server.zip && \
     unzip bedrock-server.zip -d bedrock-server && \
     rm bedrock-server.zip
