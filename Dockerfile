@@ -17,6 +17,7 @@ RUN if [ "$VERSION" = "latest" ] ; then \
     
 RUN apt-get update && \
     apt-get install -y unzip curl libcurl4 libssl1.0.0 && \
+    echo "Fetching https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip" \
     curl https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip --output bedrock-server.zip && \
     unzip bedrock-server.zip -d bedrock-server && \
     rm bedrock-server.zip
@@ -31,6 +32,14 @@ RUN mkdir /bedrock-server/config && \
             else echo "$f not found." ; \
             fi ; \
         done
+# If ops.json exists you need to move it for permissions to work.
+RUN if [ -f "/bedrock-server/ops.json" ] ; then \ 
+        echo "ops.json found." && \
+        mv /bedrock-server/ops.json /bedrock-server/config/permissions.json && \
+        ln -s /bedrock-server/config/permissions.json /bedrock-server/permissions.json ; \
+    else echo "ops.json not found." ; \
+    fi 
+
 EXPOSE 19132/udp
 
 VOLUME /bedrock-server/worlds /bedrock-server/config
