@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-ARG BDS_Version=1.12.0.28
+ARG BDS_Version=1.12.1.1
 
 ENV VERSION=$BDS_Version
 
