@@ -13,12 +13,13 @@ This Docker image will download the Bedrock Server app and set it up, along with
         `docker volume create --name "bedrock-worlds"`
 2. Create the Docker container:
     ```bash
+    docker pull docker.pkg.github.com/qq42/bedrock-server/bedrock-server:latest
     docker create --name=minecraft\
         -v "bedrock-config:/bedrock-server/config"\
         -v "bedrock-worlds:/bedrock-server/worlds"\
         -p 19132:19132/udp\
         --restart=unless-stopped\
-        roemer/bedrock-server
+        docker.pkg.github.com/qq42/bedrock-server/bedrock-server:latest
     ```
 3. Configure the default files in the `config` volume:
     1. Configure the `server.properties` to your likings.
