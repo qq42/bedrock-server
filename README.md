@@ -88,3 +88,11 @@ The server supports taking backups of the world files while the server is runnin
 | save hold | This will ask the server to prepare for a backup. It’s asynchronous and will return immediately. |
 | save query | After calling `save hold` you should call this command repeatedly to see if the preparation has finished. When it returns a success it will return a file list (with lengths for each file) of the files you need to copy. The server will not pause while this is happening, so some files can be modified while the backup is taking place. As long as you only copy the files in the given file list and truncate the copied files to the specified lengths, then the backup should be valid. |
 | save resume | When you’re finished with copying the files you should call this to tell the server that it’s okay to remove old files again. |
+
+# Updating a local docker image to a specific version of minecraft
+
+Update `BDS_Version` in `Dockerfile` based on download for ubuntu on https://www.minecraft.net/en-us/download/server/bedrock/
+
+```
+docker build -t bedrock-server .
+```
