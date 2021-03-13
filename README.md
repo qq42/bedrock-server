@@ -95,6 +95,6 @@ The server supports taking backups of the world files while the server is runnin
 Update `BDS_Version` in `Dockerfile` based on download for ubuntu on https://www.minecraft.net/en-us/download/server/bedrock/
 
 ```
-docker build -t qq42/bedrock-server:latest -t qq42/bedrock-server:1.16.201.03 .
+docker build -t qq42/bedrock-server:latest -t qq42/bedrock-server:1.16.210.06 .
 docker push qq42/bedrock-server
 ```
