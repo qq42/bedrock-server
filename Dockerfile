@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-ARG BDS_Version=1.16.210.06
+ARG BDS_Version=1.16.220.02
 
 ENV VERSION=$BDS_Version
 
@@ -19,6 +19,7 @@ RUN if [ "$VERSION" = "latest" ] ; then \
     fi && \
     curl https://minecraft.azureedge.net/bin-linux/bedrock-server-${VERSION}.zip --output bedrock-server.zip && \
     unzip bedrock-server.zip -d bedrock-server && \
+    chmod +x /bedrock-server/bedrock_server && \
     rm bedrock-server.zip
 
 # Create a separate folder for configurations move the original files there and create links for the files
